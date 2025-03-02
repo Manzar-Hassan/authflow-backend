@@ -14,6 +14,19 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'corsheaders',
+    'users',
+]
+
 # Add whitenoise middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -45,7 +58,7 @@ if not DEBUG:
 
 # CORS settings for production
 CORS_ALLOWED_ORIGINS = [
-    "https://your-frontend-domain.com",  # Replace with your frontend domain
+    "http://localhost:3000",
 ]
 CORS_ALLOW_CREDENTIALS = True
 
