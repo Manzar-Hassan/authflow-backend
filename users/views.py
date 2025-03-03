@@ -18,7 +18,7 @@ class RegisterView(generics.CreateAPIView):
 
             print(serializer)  # Debug log
             print(request.data)  # Debug log
-            
+
             if not serializer.is_valid():
                 return Response({
                     "status": "error",
@@ -69,9 +69,9 @@ class LoginView(generics.GenericAPIView):
             # Try to get the user first to check if they exist
             try:
                 user_exists = User.objects.get(username=username)
-                print(f"User exists: {user_exists.username}")  # Debug log
+                print(f"User exists: {user_exists.username}")
             except User.DoesNotExist:
-                print(f"User does not exist: {username}")  # Debug log
+                print(f"User does not exist: {username}")
                 return Response({
                     "status": "error",
                     "message": "Invalid credentials. Please check your username and password"
@@ -79,7 +79,7 @@ class LoginView(generics.GenericAPIView):
 
             # Now try to authenticate
             user = authenticate(username=username, password=password)
-            print(f"Authentication result: {user}")  # Debug log
+            print(f"Authentication result: {user}")
 
             if not user:
                 return Response({
@@ -101,7 +101,7 @@ class LoginView(generics.GenericAPIView):
             }, status=status.HTTP_200_OK)
 
         except Exception as e:
-            print(f"Login error: {str(e)}")  # Debug log
+            print(f"Login error: {str(e)}")
             return Response({
                 "status": "error",
                 "message": "An unexpected error occurred",

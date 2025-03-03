@@ -2,7 +2,7 @@ services:
   - type: web
     name: authflow-backend
     env: python
-    region: ohio  # or your preferred region
+    region: ohio
     buildCommand: pip install -r requirements.txt
     startCommand: >
       python manage.py collectstatic --noinput &&
@@ -17,4 +17,4 @@ services:
         value: ".onrender.com"
       - key: DJANGO_SETTINGS_MODULE
         value: app.settings
-    autoDeploy: true  # This enables automatic deployments
+    autoDeploy: true
